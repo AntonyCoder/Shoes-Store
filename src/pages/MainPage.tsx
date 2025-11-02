@@ -1,13 +1,14 @@
-import MainLayout from "@/layouts/MainLayout"
+import Catalog from "@/components/Catalog/Catalog";
+import TopSales from "@/components/TopSales/TopSales";
+import MainLayout from "@/layouts/MainLayout";
 
-
-const MainPage: React.FC = () =>{
-
-    return(
-        <MainLayout>
-
-        </MainLayout>
-    )
-}
+const MainPage: React.FC = () => {
+  return (
+    <MainLayout>
+      <TopSales />
+      <Catalog />
+    </MainLayout>
+  );
+};
 
 export default MainPage;
