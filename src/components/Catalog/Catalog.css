@@ -2,3 +2,7 @@
 .catalog {
   min-height: 600px;
 }
+
+.catalog-item-card {
+  margin-bottom: 1em;
+}

@@ -7,24 +7,23 @@ import './CatalogCategories.css';
 const CatalogCategories: React.FC = () => {
   const dispatch = useAppDispatch();
   const { items, selectedCategoryId } = useAppSelector((state) => state.categories);
-  console.log(items);
 
   useEffect(() => {
     dispatch(fetchCategories());
   }, [dispatch]);
 
-  function handleClick(id: number) {
+  function handleClick(e: React.MouseEvent<HTMLAnchorElement>, id: number) {
+    e.preventDefault();
     dispatch(setSelectedCategory(id));
   }
 
   return (
-    <ul className="catalog-categories nav justify-content-center">
+    <ul className="catalog-categories nav justify-content-center mb-5">
       {items.map((item) => (
         <li className="nav-item" key={item.id}>
           <a
             className={`nav-link ${selectedCategoryId === item.id ? 'active' : ''}`}
-            href="#"
-            onClick={() => handleClick(item.id)}>
+            onClick={(e) => handleClick(e, item.id)}>
             {item.title}
           </a>
         </li>

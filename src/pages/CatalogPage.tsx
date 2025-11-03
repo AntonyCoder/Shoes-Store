@@ -1,11 +1,12 @@
-import MainLayout from "@/layouts/MainLayout";
+import Catalog from '@/components/Catalog/Catalog';
+import MainLayout from '@/layouts/MainLayout';
 
 const CatalogPage: React.FC = () => {
-    return(
-        <MainLayout>
-
-        </MainLayout>
-    )
-}
+  return (
+    <MainLayout>
+      <Catalog />
+    </MainLayout>
+  );
+};
 
 export default CatalogPage;

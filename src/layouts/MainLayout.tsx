@@ -3,11 +3,11 @@ import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import Banner from "@/components/Banner/Banner";
 
-interface MainLayoutProps {
+interface IMainLayoutProps {
   children: ReactNode;
 }
 
-const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
+const MainLayout: React.FC<IMainLayoutProps> = ({ children }) => {
   return (
     <>
       <Header />

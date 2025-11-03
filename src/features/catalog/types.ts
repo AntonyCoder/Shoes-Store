@@ -1,4 +1,4 @@
-export interface Product {
+export interface IProduct {
   id: number;
   category: number;
   title: string;
@@ -12,10 +12,17 @@ export interface Product {
   heelSize: string;
   price: number;
   oldPrice?: number;
-  sizes: ProductSize[];
+  sizes: IProductSize[];
 }
 
-export interface ProductSize {
+export interface IProductSize {
   size: string;
   available: boolean;
+}
+
+export interface IProductState{
+  items: IProduct[],
+  loading: boolean,
+  error: string | null,
+  hasMore: boolean
 }
