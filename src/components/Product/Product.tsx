@@ -1,12 +1,9 @@
-import type { ITopSales } from '@/features/topSales/types';
-import './Product.css'
-
-interface IProductProps {
-  data: ITopSales;
-}
+import type { IProductProps } from './types';
+import { Link } from 'react-router-dom';
+import './Product.css';
 
 const Product: React.FC<IProductProps> = ({ data }) => {
-  const { title, price, images } = data;
+  const { title, price, images, id } = data;
 
   return (
     <div className="col-4 mb-3">
@@ -15,9 +12,9 @@ const Product: React.FC<IProductProps> = ({ data }) => {
         <div className="card-body">
           <p className="card-text">{title}</p>
           <p className="card-text">{`${price} руб.`}</p>
-          <a href="#" className="btn btn-outline-primary">
+          <Link to={`/catalog/${id}`} className="btn btn-outline-primary">
             Заказать
-          </a>
+          </Link>
         </div>
       </div>
     </div>

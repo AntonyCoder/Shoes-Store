@@ -1,13 +1,7 @@
-export interface ITopSales {
-  id: number;
-  category: number;
-  title: string;
-  price: number;
-  images: string[];
-}
+import type { IProduct } from "../catalog/types";
 
 export interface ITopSalesState {
-  items: ITopSales[];
+  items: IProduct[];
   loading: boolean;
   error: string | null;
 }

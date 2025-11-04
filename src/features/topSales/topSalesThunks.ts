@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import type { ITopSales } from './types';
+import type { IProduct } from '../catalog/types';
 import getTopSales from '@/services/topSalesServices';
 
-export const fetchTopSales = createAsyncThunk<ITopSales[], void, { rejectValue: string }>(
+export const fetchTopSales = createAsyncThunk<IProduct[], void, { rejectValue: string }>(
   'topSales/fetchTopSales',
   async (_, { rejectWithValue }) => {
     try {
