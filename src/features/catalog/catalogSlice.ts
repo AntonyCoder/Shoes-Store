@@ -7,12 +7,17 @@ const initialState: IProductState = {
   loading: false,
   error: null,
   hasMore: true,
+  search: '',
 };
 
 const catalogSlice = createSlice({
   name: 'catalog',
   initialState,
-  reducers: {},
+  reducers: {
+    addSearchText: (state, action) => {
+      state.search = action.payload;
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCatalog.pending, (state) => {
@@ -40,4 +45,5 @@ const catalogSlice = createSlice({
   },
 });
 
+export const {addSearchText} = catalogSlice.actions;
 export default catalogSlice.reducer;

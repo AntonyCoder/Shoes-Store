@@ -5,6 +5,7 @@ import getCatalog from '@/services/catalogServices';
 interface IFetchCatalogArgs {
   categoryId?: number | null;
   offset?: number;
+  search?: string;
 }
 
 export const fetchCatalog = createAsyncThunk<

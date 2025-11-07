@@ -4,6 +4,7 @@ import type { IProduct } from '@/features/catalog/types';
 interface ICatalogParams {
   categoryId?: number | null;
   offset?: number;
+  search?: string;
 }
 
 async function getCatalog(params: ICatalogParams = {}): Promise<IProduct[]> {
@@ -16,6 +17,10 @@ async function getCatalog(params: ICatalogParams = {}): Promise<IProduct[]> {
 
   if (params.offset) {
     query.append('offset', params.offset.toString());
+  }
+
+  if(params.search) {
+    query.append('q', params.search.toString());
   }
 
   const url = params.toString() ? `items?${query}` : 'items';

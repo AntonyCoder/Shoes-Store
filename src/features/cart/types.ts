@@ -1,0 +1,13 @@
+export interface ICartState {
+    items: ICartItem[],
+    totalCount: number,
+    totalPrice: number,
+}
+
+export interface ICartItem {
+    id: number,
+    title: string,
+    size: string,
+    count: number,
+    price: number,
+}

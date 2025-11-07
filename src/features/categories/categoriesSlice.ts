@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
 import { fetchCategories } from './categoriesThunks';
 import type { ICategoriesState } from './types';
 
@@ -14,7 +13,7 @@ const categoriesSlice = createSlice({
   name: 'categories',
   initialState,
   reducers: {
-    setSelectedCategory(state, action: PayloadAction<number>) {
+    setSelectedCategory(state, action) {
       state.selectedCategoryId = action.payload;
     },
   },

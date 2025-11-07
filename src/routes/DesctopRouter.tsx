@@ -5,6 +5,7 @@ import NotFoundPage from '@/pages/NotFoundPage';
 import CatalogPage from '@/pages/CatalogPage';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import CatalogItemPage from '@/pages/CatalogItemPage';
+import CartPage from '@/pages/CartPage';
 
 const DesctopRouter: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ const DesctopRouter: React.FC = () => {
         <Route path="/catalog/:id" element={<CatalogItemPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contacts" element={<ContactsPage />} />
+        <Route path="/cart" element={<CartPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Router>

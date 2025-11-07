@@ -6,9 +6,10 @@ export interface IProduct {
   images: string[];
 }
 
-export interface IProductState{
-  items: IProduct[],
-  loading: boolean,
-  error: string | null,
-  hasMore: boolean
+export interface IProductState {
+  items: IProduct[];
+  loading: boolean;
+  error: string | null;
+  hasMore: boolean;
+  search: string;
 }
