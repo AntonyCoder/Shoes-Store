@@ -3,11 +3,13 @@ import { fetchCatalog } from '@/features/catalog/catalogThunks';
 import { addSearchText } from '@/features/catalog/catalogSlice';
 import './Search.css';
 
+//Компонент поле поиска товаров
 const Search: React.FC = () => {
   const dispatch = useAppDispatch();
   const { selectedCategoryId } = useAppSelector((state) => state.categories);
   const { search } = useAppSelector((state) => state.catalog);
 
+  //Обработчик отправки запроса на поиск товаров
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
@@ -20,6 +22,7 @@ const Search: React.FC = () => {
     dispatch(addSearchText(search));
     dispatch(fetchCatalog({ search, categoryId: selectedCategoryId }));
   }
+
   return (
     <form className="catalog-search-form form-inline" onSubmit={handleSubmit}>
       <input

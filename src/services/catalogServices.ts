@@ -7,6 +7,7 @@ interface ICatalogParams {
   search?: string;
 }
 
+//Функция запроса каталога товаров
 async function getCatalog(params: ICatalogParams = {}): Promise<IProduct[]> {
   const query = new URLSearchParams();
   

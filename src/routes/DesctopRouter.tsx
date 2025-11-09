@@ -7,6 +7,8 @@ import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import CatalogItemPage from '@/pages/CatalogItemPage';
 import CartPage from '@/pages/CartPage';
 
+
+//Главный роутер сайта магазина
 const DesctopRouter: React.FC = () => {
   return (
     <Router>

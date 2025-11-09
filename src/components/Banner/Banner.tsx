@@ -1,6 +1,7 @@
 import banner from "@/assets/img/banner.jpg";
 import "./Banner.css";
 
+//Компонент баннера магазина
 const Banner: React.FC = () => {
   return (
     <div className="banner">

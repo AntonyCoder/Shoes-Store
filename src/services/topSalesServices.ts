@@ -1,8 +1,9 @@
 import apiClient from "./apiClient";
-import type { ITopSales } from "@/features/topSales/types";
+import type { IProduct } from "@/features/catalog/types";
 
-async function getTopSales(): Promise<ITopSales[]>{
-    return apiClient<ITopSales[]>('top-sales');
+//Функция запроса хитов продаж
+async function getTopSales(): Promise<IProduct[]>{
+    return apiClient<IProduct[]>('top-sales');
 }
 
 export default getTopSales;

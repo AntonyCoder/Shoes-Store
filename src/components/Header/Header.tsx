@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from '@/utils/hooks';
 import { addSearchText } from '@/features/catalog/catalogSlice';
 import { fetchCatalog } from '@/features/catalog/catalogThunks';
 
+//Компонент шапка магазина
 const Header: React.FC = () => {
   const [showForm, setShowForm] = useState(false);
   const [searchValue, setSearchValue] = useState('');
@@ -14,6 +15,7 @@ const Header: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
+  //Обработчик отображения формы поиска
   function handleClick() {
     if (!showForm) {
       setShowForm(true);
@@ -24,6 +26,7 @@ const Header: React.FC = () => {
     }
   }
 
+  //Обработчик отправки запроса на поиск товара
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (searchValue.trim()) {
@@ -31,6 +34,7 @@ const Header: React.FC = () => {
     }
   }
 
+  //Функция отправки формы
   function submitForm() {
     dispatch(addSearchText(searchValue));
     dispatch(fetchCatalog({ search: searchValue }));
@@ -39,6 +43,7 @@ const Header: React.FC = () => {
     setSearchValue('');
   }
 
+  //Обработчик изменения поля поиска
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
     setSearchValue(value);

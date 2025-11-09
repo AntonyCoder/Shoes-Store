@@ -5,10 +5,12 @@ import Loader from '../Loader/Loader';
 import { useAppDispatch, useAppSelector } from '@/utils/hooks';
 import { fetchTopSales } from '@/features/topSales/topSalesThunks';
 
+//Компонент отображения хитов продаж 
 const TopSales: React.FC = () => {
   const dispatch = useAppDispatch();
   const { items, loading, error } = useAppSelector((state) => state.topSales);
 
+  //Загрузка данных при монтировании компонента
   useEffect(() => {
     dispatch(fetchTopSales());
   }, [dispatch]);

@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom';
 import defaultPoster from '@/assets/img/poster_none.png';
 import './Product.css';
 
+//Компонент карточки товара
 const Product: React.FC<IProductProps> = ({ data }) => {
   const { title, price, images, id } = data;
   const [imageSrc, setImageSrc] = useState(images[0]);
 
+  //Обработка ошибки загрузки изображения
   function handleImageError() {
     setImageSrc(defaultPoster);
   }

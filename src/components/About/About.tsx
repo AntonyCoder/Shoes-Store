@@ -1,3 +1,4 @@
+//Компонент о магазине
 const About: React.FC = () => {
   return (
     <section className="top-sales">

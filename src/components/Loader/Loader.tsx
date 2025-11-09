@@ -1,5 +1,6 @@
 import './Loader.css'
 
+//Компонент лоадер для сайта
 const Loader: React.FC = () => {
   return (
     <div className="preloader">

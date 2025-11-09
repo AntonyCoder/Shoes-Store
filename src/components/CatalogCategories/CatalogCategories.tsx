@@ -4,14 +4,17 @@ import { fetchCategories } from '@/features/categories/categoriesThunks';
 import { setSelectedCategory } from '@/features/categories/categoriesSlice';
 import './CatalogCategories.css';
 
+//Компонент категорий товаров
 const CatalogCategories: React.FC = () => {
   const dispatch = useAppDispatch();
   const { items, selectedCategoryId } = useAppSelector((state) => state.categories);
 
+  //Запрос данных при монтировании компонента
   useEffect(() => {
     dispatch(fetchCategories());
   }, [dispatch]);
 
+  //Обработчик смены категории товаров
   function handleClick(e: React.MouseEvent<HTMLAnchorElement>, id: number) {
     e.preventDefault();
     dispatch(setSelectedCategory(id));

@@ -7,6 +7,7 @@ interface IMainLayoutProps {
   children: ReactNode;
 }
 
+//Компонент обертки магазина 
 const MainLayout: React.FC<IMainLayoutProps> = ({ children }) => {
   return (
     <>

@@ -5,21 +5,22 @@ import { fetchCatalogItem } from '@/features/catalogItem/catalogItemThunks';
 import { clearItem } from '@/features/catalogItem/catalogItemSlice';
 import Loader from '../Loader/Loader';
 import defaultPoster from '@/assets/img/poster_none.png';
-import './CatalogItem.css';
 import { addItemToCart } from '@/features/cart/cartSlice';
+import './CatalogItem.css';
 
+//Компонент отдельного товара из каталога
 const CatalogItem: React.FC = () => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { id } = useParams();
   const { item, loading, error } = useAppSelector((state) => state.catalogItem);
   const [activeButton, setActiveButton] = useState(false);
   const [selectSize, setSelectSize] = useState('');
   let [count, setCount] = useState(1);
 
-  const itemImage = item?.images[0] ? item.images[0] : defaultPoster;
-  const [imageSrc, setImageSrc] = useState(itemImage);
+  const [imageSrc, setImageSrc] = useState(defaultPoster);
 
+  //Запрос данных при монтировании компонента и очистка при размонтировании
   useEffect(() => {
     dispatch(fetchCatalogItem(Number(id)));
 
@@ -27,6 +28,15 @@ const CatalogItem: React.FC = () => {
       dispatch(clearItem());
     };
   }, [dispatch, id]);
+
+  //Установление изображения или дефолтного постера при монтировании компонента
+  useEffect(() => {
+    if (item?.images?.[0]) {
+      setImageSrc(item.images[0]);
+    } else {
+      setImageSrc(defaultPoster);
+    }
+  }, [item]);
 
   //Обработка ошибки загрузки изображения
   function handleImageError() {
@@ -55,7 +65,6 @@ const CatalogItem: React.FC = () => {
     }
   }
 
-  
   if (error) {
     return (
       <section className="catalog-item">
@@ -63,7 +72,7 @@ const CatalogItem: React.FC = () => {
       </section>
     );
   }
-  
+
   if (!item || loading) {
     return (
       <section className="catalog-item">
@@ -71,13 +80,13 @@ const CatalogItem: React.FC = () => {
       </section>
     );
   }
-  
+
   const { title, sku, manufacturer, color, material, season, reason, sizes, price } = item;
 
   //Обработчик добавления товара в корзину
-  function handleAddToCart(){
-    dispatch(addItemToCart({id, title, size: selectSize, count, price}))
-    navigate('/cart')
+  function handleAddToCart() {
+    dispatch(addItemToCart({ id: item?.id, title, size: selectSize, count, price }));
+    navigate('/cart');
   }
 
   return (

@@ -28,6 +28,10 @@ async function apiClient<T>(
       throw new Error(`Ошибка: ${response.status} ${response.statusText}`);
     }
 
+    if (response.status === 204) {
+      return {} as T;
+    }
+
     const contentType = response.headers.get("content-type");
     if (contentType && contentType.includes("application/json")) {
       const data: T = await response.json();

@@ -7,15 +7,18 @@ import type { ICatalogProps } from './types';
 import './Catalog.css';
 import Loader from '../Loader/Loader';
 
+//Компонент каталога товаров
 const Catalog: React.FC<ICatalogProps> = ({ children }) => {
   const dispatch = useAppDispatch();
   const { items, hasMore, loading, search, error } = useAppSelector((state) => state.catalog);
   const { selectedCategoryId } = useAppSelector((state) => state.categories);
 
+  //Загрузка каталога при монтировании компонента 
   useEffect(() => {
     dispatch(fetchCatalog({ categoryId: selectedCategoryId, offset: 0, search }));
   }, [dispatch, selectedCategoryId]);
 
+  //Обработчик нажатия на кнопку Загрузить еще
   function handleClick() {
     dispatch(fetchCatalog({ categoryId: selectedCategoryId, offset: items.length, search }));
   }

@@ -1,3 +1,4 @@
+//Компонент контактов магазина
 const Contacts: React.FC = () => {
   return (
     <section className="top-sales">

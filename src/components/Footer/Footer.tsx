@@ -1,6 +1,7 @@
 import "./Footer.css";
 import { NavLink } from "react-router-dom";
 
+//Компонент футер магазина
 const Footer: React.FC = () => {
   return (
     <footer className="container bg-light footer">
