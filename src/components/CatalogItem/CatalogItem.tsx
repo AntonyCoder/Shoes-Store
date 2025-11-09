@@ -16,8 +16,7 @@ const CatalogItem: React.FC = () => {
   const { item, loading, error } = useAppSelector((state) => state.catalogItem);
   const [activeButton, setActiveButton] = useState(false);
   const [selectSize, setSelectSize] = useState('');
-  let [count, setCount] = useState(1);
-
+  const [count, setCount] = useState(1);
   const [imageSrc, setImageSrc] = useState(defaultPoster);
 
   //Запрос данных при монтировании компонента и очистка при размонтировании
@@ -58,10 +57,10 @@ const CatalogItem: React.FC = () => {
   function handleChangeCount(e: React.MouseEvent<HTMLButtonElement>) {
     const symbol = e.currentTarget.textContent;
     if (symbol === '+' && count < 10) {
-      setCount(++count);
+      setCount((prev) => prev + 1);
     }
     if (symbol === '-' && count > 1) {
-      setCount(--count);
+      setCount((prev) => prev - 1);
     }
   }
 

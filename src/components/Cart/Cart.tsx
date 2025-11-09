@@ -44,6 +44,7 @@ const Cart: React.FC = () => {
         form.reset();
       }, 2000);
     } catch (error) {
+      console.error(error)
       setTimeout(() => {
         setOrderStatus('error');
       }, 2000);
