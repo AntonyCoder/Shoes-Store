@@ -13,7 +13,7 @@ const Catalog: React.FC<ICatalogProps> = ({ children }) => {
   const { items, hasMore, loading, search, error } = useAppSelector((state) => state.catalog);
   const { selectedCategoryId } = useAppSelector((state) => state.categories);
 
-  //Загрузка каталога при монтировании компонента 
+  //Загрузка каталога при монтировании компонента
   useEffect(() => {
     dispatch(fetchCatalog({ categoryId: selectedCategoryId, offset: 0, search }));
   }, [dispatch, selectedCategoryId]);
@@ -31,6 +31,8 @@ const Catalog: React.FC<ICatalogProps> = ({ children }) => {
         <Loader />
       ) : error ? (
         <div>Ошибка загрузки данных</div>
+      ) : items.length === 0 ? (
+        <div>По вашему запросу ничего не найдено</div>
       ) : (
         <>
           <CatalogCategories />

@@ -21,7 +21,7 @@ const Cart: React.FC = () => {
   }
 
   //Формируем тело запроса и отправляем запрос на заказ
-  function handleSendOrder(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSendOrder(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     setOrderStatus('loading');
@@ -36,7 +36,7 @@ const Cart: React.FC = () => {
         items: cartItems,
       };
 
-      sendCartOrder(cartOrder);
+      await sendCartOrder(cartOrder);
 
       setTimeout(() => {
         setOrderStatus('success');

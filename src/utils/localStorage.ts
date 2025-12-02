@@ -1,14 +1,20 @@
 import type { ICartState } from '@/features/cart/types';
 
+const defaultCartState: ICartState = {
+  items: [],
+  totalCount: 0,
+  totalPrice: 0,
+};
+
 //Функция для загрузки состояния корзины из LocalStorage
-export const loadCart = (): ICartState | undefined => {
+export const loadCart = (): ICartState => {
   try {
     const serializedState = localStorage.getItem('cart');
-    if (!serializedState) return undefined;
+    if (!serializedState) return defaultCartState;
     return JSON.parse(serializedState);
   } catch (error) {
     console.error('Не удалось загрузить корзину из localStorage', error);
-    return undefined;
+    return defaultCartState;
   }
 };
 
